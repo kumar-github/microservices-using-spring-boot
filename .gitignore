@@ -29,6 +29,10 @@ gradle-app.setting
 #ignore .settings folder created by eclipse
 **/.settings/*
 
+#ignore .classpath and .project files created by eclipse. Not sure this is right. Let's use it for a while and see...
+*.project
+*.classpath
+
 #ignore Gradle's bin folder and anything under that and also .gradle folder
 .gradle
 build/
