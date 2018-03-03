@@ -1,0 +1,1 @@
+CREATE TABLE product(product_id INT NOT NULL, product_name VARCHAR(100) NOT NULL, product_description VARCHAR(100) NOT NULL);

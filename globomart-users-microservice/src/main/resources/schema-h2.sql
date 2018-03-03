@@ -1,0 +1,2 @@
+--CREATE TABLE review(product_id INT NOT NULL, product_name VARCHAR(100) NOT NULL, product_review VARCHAR(100) NOT NULL);
+CREATE TABLE user(user_id INT NOT NULL, user_name VARCHAR(20) NOT NULL, user_rating VARCHAR(20) NOT NULL);

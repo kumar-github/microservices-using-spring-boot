@@ -1,0 +1,7 @@
+insert into user values(1001, 'Ken', 'OK')
+insert into user values(1002, 'Don', 'GOOD')
+insert into user values(1003, 'Steve', 'BAD')
+insert into user values(1004, 'Emiliano', 'GOOD')
+insert into user values(1005, 'Kevin', 'OK')
+insert into user values(1006, 'Jason', 'BAD')
+insert into user values(1006, 'Anderson', 'BAD')
