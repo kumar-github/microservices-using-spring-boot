@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 import com.kumar.productcatalogmicroservice.product.Product;
 import com.kumar.productcatalogmicroservice.product.ProductRepository;
@@ -19,6 +20,7 @@ import com.kumar.productcatalogmicroservice.product.ProductRepository;
  */
 
 @SpringBootApplication
+@EnableEurekaClient
 //@ComponentScan(basePackages = {"com.kumar.productcatalogmicroservice", "com.kumar.productcatalogmicroservice"})
 public class ProductCatalogMicroserviceApplication
 {

@@ -7,6 +7,7 @@ package com.kumar.usersmicroservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 import com.kumar.usersmicroservice.user.User;
 import com.kumar.usersmicroservice.user.UserRepository;
@@ -17,6 +18,7 @@ import com.kumar.usersmicroservice.user.UserRepository;
  */
 
 @SpringBootApplication
+@EnableEurekaClient
 public class UsersMicroserviceApplication
 {
 	@Autowired

@@ -26,6 +26,12 @@ public class EurekaClientApplication
 		SpringApplication.run(EurekaClientApplication.class, args);
 	}
 
+	@RequestMapping("/home")
+	public String showHomePage()
+	{
+		return "<html><head></head><body bgcolor=\'#ff5e62\'><h1>Welcome to Spring Cloud Eureka Client!</h1></body></html>";
+	}
+
 	@RequestMapping("/greeting")
 	public String greeting()
 	{

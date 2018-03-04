@@ -6,5 +6,8 @@ spring:
         git:
           uri: https://github.com/kumar-github/microservices-configuration.git
           search-paths: config
+  application:
+    name: spring-cloud-config-server
+    
 server:
   port: 8888

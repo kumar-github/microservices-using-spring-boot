@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HomeController
 {
-	@RequestMapping
+	@RequestMapping("/home")
 	public String showHomePage()
 	{
-		return "You are on the home page of Globo-Mart.";
+		return "<html><head></head><body bgcolor=\'#a2ab58\'><h1>You are on the home page of Globo-Mart Product Catalog!</h1></body></html>";
 	}
 }

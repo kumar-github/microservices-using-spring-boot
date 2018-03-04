@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class EmployeeController
 {
+	@RequestMapping("/home")
+	public String showHomePage()
+	{
+		return "<html><head></head><body bgcolor=\'#a2ab58\'><h1>Welcome to Employee Producer!</h1></body></html>";
+	}
+
 	@RequestMapping("/employees")
 	public List<Employee> getEmployees()
 	{

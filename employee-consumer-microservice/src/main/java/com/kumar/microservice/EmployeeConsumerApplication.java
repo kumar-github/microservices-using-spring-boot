@@ -35,6 +35,12 @@ public class EmployeeConsumerApplication
 		SpringApplication.run(EmployeeConsumerApplication.class, args);
 	}
 
+	@RequestMapping("/home")
+	public String showHomePage()
+	{
+		return "<html><head></head><body bgcolor=\'#a2ab58\'><h1>Welcome to Employee Consumer!</h1></body></html>";
+	}
+
 	@RequestMapping("/employees")
 	public ResponseEntity<String> getEmployees() //throws RestClientException, IOException
 	{

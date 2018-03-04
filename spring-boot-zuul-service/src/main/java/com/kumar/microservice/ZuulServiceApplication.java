@@ -1,43 +1,26 @@
 package com.kumar.microservice;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @EnableEurekaClient
 @EnableZuulProxy
+@RestController
 public class ZuulServiceApplication
 {
-	@Autowired
-	//private EurekaClient eurekaClient;
-	private DiscoveryClient discoveryClient;
-
 	public static void main(final String[] args)
 	{
 		SpringApplication.run(ZuulServiceApplication.class, args);
 	}
 
-	@RequestMapping("/greeting")
-	public String greeting()
+	@RequestMapping("/home")
+	public String showHomePage()
 	{
-		return "Hello from EurekaClient!";
-	}
-
-	@RequestMapping("/service-instances/{applicationName}")
-	public List<ServiceInstance> getServiceInstancesByApplicationName(@PathVariable final String applicationName)
-	{
-		//return this.eurekaClient.getInstancesById(applicationName);
-		//final InstanceInfo nextServerFromEureka = this.eurekaClient.getNextServerFromEureka("STORES", false);
-		//System.out.println(nextServerFromEureka.getHomePageUrl());
-		return this.discoveryClient.getInstances(applicationName);
+		return "<html><head></head><body bgcolor=\'#a2ab58\'><h1>You are on the home page of Zuul Gateway!</h1></body></html>";
 	}
 }
