@@ -1,0 +1,50 @@
+buildscript
+{
+	ext
+	{
+		springBootVersion = '1.5.10.RELEASE'
+	}
+	repositories
+	{
+		mavenCentral()
+	}
+	dependencies
+	{
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.8
+
+repositories
+{
+    mavenCentral()
+}
+
+ext
+{
+	springCloudVersion = 'Edgware.SR2'
+}
+
+dependencies
+{
+	/*
+	We need the below dependency, if we want this application get discovered by the Service Discovery (Eureka Server)
+	By adding the below dependency and also by annotating with @EnableDiscoveryClient or @EnableEurekaClient, this application will be automatically discovered
+	by the Eureka Server.
+	We also need to tell (application.properties or bootstrap.properties) where Eureka Server is running
+	*/
+	compile('org.springframework.cloud:spring-cloud-starter-eureka')
+	compile('org.springframework.cloud:spring-cloud-starter-zuul')
+}
+
+dependencyManagement
+{
+	imports
+	{
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
