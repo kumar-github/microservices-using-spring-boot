@@ -59,4 +59,10 @@ public class UserController
 	{
 		this.userService.deleteUser(userId);
 	}
+
+	@RequestMapping("/product/{productId:[0-9]+}")
+	public List<User> getUsersForProductId(@PathVariable final int productId)
+	{
+		return this.userService.getUsersByProductId(productId);
+	}
 }

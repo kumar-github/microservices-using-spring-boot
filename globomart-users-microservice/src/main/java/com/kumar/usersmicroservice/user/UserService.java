@@ -6,6 +6,7 @@ package com.kumar.usersmicroservice.user;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,11 @@ public class UserService
 	{
 		//return this.getAllUsers().stream().filter(aUser -> (aUser.getUserId() == productId)).findFirst().get();
 		return this.userRepository.findOne(userId);
+	}
+
+	public List<User> getUsersByProductId(final int productId)
+	{
+		return this.getAllUsers().stream().filter(aUser -> aUser.getProductId() == productId).collect(Collectors.toList());
 	}
 
 	public List<User> getUsersByRating(final String userRating)

@@ -4,14 +4,24 @@
  */
 package com.kumar.productcatalogmicroservice.product;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @author Saravana Kumar M
@@ -23,6 +33,9 @@ public class ProductController
 {
 	@Autowired
 	private ProductService productService;
+
+	@Autowired
+	private LoadBalancerClient loadBalancerClient;
 
 	@RequestMapping("/products")
 	public List<Product> getAllProducts()
@@ -77,5 +90,34 @@ public class ProductController
 	public void deleteProduct(@PathVariable final int productId)
 	{
 		this.productService.deleteProduct(productId);
+	}
+
+	@RequestMapping("/products/{productId:[0-9]+}/users")
+	public List<User> getUsersForProductId(@PathVariable final int productId)
+	{
+		final ServiceInstance serviceInstance = this.loadBalancerClient.choose("globomart-users-microservice");
+		String baseUrl = serviceInstance.getUri().toString();
+		baseUrl = baseUrl + "/users";
+		final RestTemplate restTemplate = new RestTemplate();
+		final ResponseEntity<List<User>> response = null;
+		try
+		{
+			//response = restTemplate.exchange(baseUrl, HttpMethod.GET, getHeaders(), String.class);
+			final User[] allUsers = restTemplate.getForObject(baseUrl, User[].class);
+			return Arrays.asList(allUsers).stream().filter(anUser -> anUser.getProductId() == productId).collect(Collectors.toList());
+		}
+		catch(final Exception ex)
+		{
+			System.out.println(ex);
+		}
+		//return response;
+		return null;
+	}
+
+	private static HttpEntity<?> getHeaders() throws IOException
+	{
+		final HttpHeaders headers = new HttpHeaders();
+		headers.set("Accept", MediaType.APPLICATION_JSON_VALUE);
+		return new HttpEntity<>(headers);
 	}
 }

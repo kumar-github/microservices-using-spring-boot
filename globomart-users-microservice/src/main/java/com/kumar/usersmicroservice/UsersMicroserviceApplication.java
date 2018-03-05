@@ -32,12 +32,12 @@ public class UsersMicroserviceApplication
 	//@PostConstruct
 	public void setupInitialData()
 	{
-		this.userRepository.save(new User(1001, "Ken", "BAD"));
-		this.userRepository.save(new User(1002, "Don", "GOOD"));
-		this.userRepository.save(new User(1003, "Steve", "OK"));
-		this.userRepository.save(new User(1004, "Emiliano", "GOOD"));
-		this.userRepository.save(new User(1005, "Kevin", "OK"));
-		this.userRepository.save(new User(1006, "Jason", "BAD"));
-		this.userRepository.save(new User(1007, "Anderson", "BAD"));
+		this.userRepository.save(new User(1001, "Ken", "BAD", 101));
+		this.userRepository.save(new User(1002, "Don", "GOOD", 101));
+		this.userRepository.save(new User(1003, "Steve", "OK", 201));
+		this.userRepository.save(new User(1004, "Emiliano", "GOOD", 201));
+		this.userRepository.save(new User(1005, "Kevin", "OK", 301));
+		this.userRepository.save(new User(1006, "Jason", "BAD", 302));
+		this.userRepository.save(new User(1007, "Anderson", "BAD", 302));
 	}
 }

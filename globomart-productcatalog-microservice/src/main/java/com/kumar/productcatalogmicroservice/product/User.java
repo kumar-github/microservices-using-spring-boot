@@ -2,7 +2,7 @@
  * Copyright (c) 2018 by amphorainc.com. All rights reserved.
  * created on 26-Feb-2018
  */
-package com.kumar.usersmicroservice.user;
+package com.kumar.productcatalogmicroservice.product;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
